@@ -1,34 +1,39 @@
 import styled from "@emotion/styled"
 
-import "./App.css"
+const Header = styled.header({
+  height: "100px",
+  width: "100%",
+  position: "fixed",
+  top: "0px",
+  backgroundColor: "lightgray",
+  borderBottom: "1px solid red",
+  marginLeft: "300px",
+  zIndex: "sticky2",
+})
 
-const Section = styled.section`
-  background: #333;
-  color: #fff;
-`
+const Sidebar = styled.aside({
+  width: "300px",
+  borderRight: "1px solid blue",
+  position: "fixed",
+  height: "100%",
+  zIndex: 3,
+})
 
-// this component has the same styles as Section but it renders an aside
-const Aside = Section.withComponent("aside")
-
-const Child = styled.div`
-  color: red;
-`
-
-const Parent = styled.div`
-  ${Child} {
-    color: green;
-  }
-`
-
-const Container = styled.div((props) => ({
-  display: "flex",
-  flexDirection: props.column && "column",
-}))
+const Main = styled.main({
+  marginTop: "100px",
+  marginLeft: "300px",
+  border: "1px solid green",
+})
 
 export default function App() {
   return (
     <>
-      <Container>This is my button</Container>
+      <Sidebar>Sidebar</Sidebar>
+      <Header>This is Header</Header>
+      <Main>main</Main>
+      <div css={{ fontSize: "2em", color: "purple", background: "red" }}>
+        asd
+      </div>
     </>
   )
 }
