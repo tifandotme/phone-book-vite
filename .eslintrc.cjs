@@ -8,7 +8,7 @@ module.exports = {
     "plugin:react/jsx-runtime",
     "plugin:react-hooks/recommended",
   ],
-  ignorePatterns: ["dist", ".eslintrc.cjs"],
+  ignorePatterns: ["dist", ".eslintrc.cjs", "**/*.md", "**/*.d.ts"],
   parser: "@typescript-eslint/parser",
   plugins: ["react-refresh"],
   rules: {
@@ -16,6 +16,7 @@ module.exports = {
       "warn",
       { allowConstantExport: true },
     ],
+    "react/no-unknown-property": "off",
     "prefer-const": "error",
     "no-undef": "off",
   },
