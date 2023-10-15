@@ -1,39 +1,28 @@
-import styled from "@emotion/styled"
+import { ApolloProvider } from "@apollo/client"
+import { Global, ThemeProvider } from "@emotion/react"
+import { BrowserRouter, Route, Routes } from "react-router-dom"
 
-const Header = styled.header({
-  height: "100px",
-  width: "100%",
-  position: "fixed",
-  top: "0px",
-  backgroundColor: "lightgray",
-  borderBottom: "1px solid red",
-  marginLeft: "300px",
-  zIndex: "sticky2",
-})
-
-const Sidebar = styled.aside({
-  width: "300px",
-  borderRight: "1px solid blue",
-  position: "fixed",
-  height: "100%",
-  zIndex: 3,
-})
-
-const Main = styled.main({
-  marginTop: "100px",
-  marginLeft: "300px",
-  border: "1px solid green",
-})
+import { apolloClient } from "@/lib"
+import { theme } from "@/styles"
+import { HomePage } from "@/components/home-page"
+import { PanelContainer } from "@/components/panel-container"
 
 export default function App() {
   return (
-    <>
-      <Sidebar>Sidebar</Sidebar>
-      <Header>This is Header</Header>
-      <Main>main</Main>
-      <div css={{ fontSize: "2em", color: "purple", background: "red" }}>
-        asd
-      </div>
-    </>
+    <ThemeProvider theme={theme}>
+      <ApolloProvider client={apolloClient}>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<PanelContainer />}>
+              <Route index element={<HomePage />} />
+              {/* <Route path="person">
+              <Route path=":id" element={<DetailPage />} />
+            </Route> */}
+            </Route>
+          </Routes>
+        </BrowserRouter>
+        <Global styles={theme.global} />
+      </ApolloProvider>
+    </ThemeProvider>
   )
 }
