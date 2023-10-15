@@ -16,8 +16,13 @@ module.exports = {
       "warn",
       { allowConstantExport: true },
     ],
-    "react/no-unknown-property": "off",
+    "react/no-unknown-property": ["error", { ignore: ["css"] }],
     "prefer-const": "error",
     "no-undef": "off",
+  },
+  settings: {
+    react: {
+      version: "detect",
+    },
   },
 }
