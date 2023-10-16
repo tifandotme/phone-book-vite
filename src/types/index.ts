@@ -1,5 +1,3 @@
-import { theme } from "@/styles"
+import { formatContactList } from "@/lib"
 
-declare module "@emotion/react" {
-  export interface Theme extends Readonly<typeof theme> {}
-}
+export type FormattedContactList = ReturnType<typeof formatContactList>
