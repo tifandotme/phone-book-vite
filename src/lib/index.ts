@@ -1,3 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+import React from "react"
+import { ApolloQueryResult } from "@apollo/client"
+
+import { QueryContextValue } from "@/types"
 import { type GetContactListQuery } from "@/types/__generated__/graphql"
 
 export function formatContactList(data: GetContactListQuery["contact"]) {
@@ -17,3 +23,8 @@ export function formatContactList(data: GetContactListQuery["contact"]) {
 export function isObjectEmpty(obj: Record<string | number | symbol, unknown>) {
   return Object.keys(obj).length === 0
 }
+
+export const QueryResultContext = React.createContext<QueryContextValue<any>>({
+  queryData: { loading: true },
+  refetch: () => Promise.resolve({} as ApolloQueryResult<any>),
+})

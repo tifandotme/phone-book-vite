@@ -1,16 +1,11 @@
-import { useQuery } from "@apollo/client"
-
-import { Order_By } from "@/types/__generated__/graphql"
 import { formatContactList } from "@/lib"
-import { queries } from "@/lib/graphql"
+import { useContactListContext } from "@/hooks/use-contact-list-context"
 import { ContactsTable } from "@/components/contacts-table"
 
 export function HomePage() {
-  const { loading, error, data, refetch } = useQuery(queries.GET_CONTACT_LIST, {
-    variables: {
-      order_by: { first_name: Order_By.Asc },
-    },
-  })
+  const { queryData, refetch } = useContactListContext()
+
+  const { data, error, loading } = queryData
 
   if (loading) return <p>Loading...</p>
 

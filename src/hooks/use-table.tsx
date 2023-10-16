@@ -26,14 +26,14 @@ import {
 } from "react-icons/hi2"
 
 import { FormattedContactList } from "@/types"
-import { useDelete } from "@/hooks/use-delete"
+import { useDeleteContact } from "@/hooks/use-delete-contact"
 
 export function useTable(data: FormattedContactList, refetch: () => void) {
   const [rowPinning, setRowPinning] = React.useState<RowPinningState>({
     top: [],
   })
 
-  const { deleteContact } = useDelete()
+  const { deleteContact } = useDeleteContact()
 
   const table = useReactTable({
     data,
@@ -82,7 +82,11 @@ export function useTable(data: FormattedContactList, refetch: () => void) {
           return (
             <HStack align="flex-start" my="2">
               <Avatar
-                name={row.original.first_name.charAt(0)}
+                name={
+                  row.original.first_name.charAt(0).match(/^[a-zA-Z]+$/i)
+                    ? row.original.first_name.charAt(0).toUpperCase()
+                    : "#"
+                }
                 color="gray.600"
                 bgColor={avatarBg}
               />
