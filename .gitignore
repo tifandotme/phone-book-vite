@@ -25,4 +25,4 @@ dist-ssr
 *.sw?
 
 # GraphQL Codegen
-__generated__
+**/__generated__/*

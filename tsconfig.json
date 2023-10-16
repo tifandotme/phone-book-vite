@@ -22,8 +22,6 @@
     "allowUnreachableCode": false,
     "noUncheckedIndexedAccess": true,
 
-    "jsxImportSource": "@emotion/react",
-
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]

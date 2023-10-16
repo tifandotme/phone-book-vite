@@ -10,7 +10,6 @@ const importConfig = {
     "^@/config(/.*)?$",
     "^@/lib(/.*)?$",
     "^@/hooks(/.*)?$",
-    "^@/styles(/.*)?$",
     "^@/components/ui(.*)$",
     "^@/components(.*)$",
     "",
