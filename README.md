@@ -1,6 +1,3 @@
 # Phone Book App
 
-<!-- ## Features
-
-- [x] PWA
-- [x] Mobile-first -->
+Deployed at: __<https://phone-book.tifan.me>__
