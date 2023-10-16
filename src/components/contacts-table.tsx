@@ -1,4 +1,3 @@
-import React from "react"
 import {
   Box,
   Button,
@@ -27,8 +26,10 @@ import {
   HiMiniChevronRight,
   HiMiniPlusSmall,
 } from "react-icons/hi2"
+import { useNavigate } from "react-router-dom"
 
 import { FormattedContactList } from "@/types"
+import { useHeaderHeight } from "@/hooks/use-header-height"
 import { useTable } from "@/hooks/use-table"
 
 export function ContactsTable({
@@ -38,18 +39,16 @@ export function ContactsTable({
   data: FormattedContactList
   refetch: () => void
 }) {
-  const [headerHeight, setHeaderHeight] = React.useState(0)
-  const headerRef = React.useRef<HTMLDivElement>(null)
-
-  React.useLayoutEffect(() => {
-    setHeaderHeight(headerRef.current?.offsetHeight ?? 0)
-  }, [])
+  const { height, ref } = useHeaderHeight()
 
   const table = useTable(data, refetch)
+
+  const navigate = useNavigate()
 
   return (
     <>
       <IconButton
+        onClick={() => navigate("/person/add")}
         aria-label="Add new contact"
         icon={<Icon as={HiMiniPlusSmall} boxSize="10" />}
         zIndex="4"
@@ -66,7 +65,7 @@ export function ContactsTable({
       />
 
       <Box
-        ref={headerRef}
+        ref={ref}
         w="full"
         top="0px"
         pos="fixed"
@@ -101,7 +100,7 @@ export function ContactsTable({
         </HStack>
       </Box>
 
-      <Box mt={headerHeight} mb="14" px="4">
+      <Box mt={height} mb="14" px="4">
         <Text
           mx="4"
           mb="4"
