@@ -3,9 +3,9 @@ import { ChakraProvider } from "@chakra-ui/react"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 
 import { chakraTheme } from "@/config"
-import { apolloClient } from "./lib/graphql"
-import { HomePage } from "@/components/home-page"
+import { apolloClient } from "@/lib/graphql"
 import { Container } from "@/components/container"
+import { HomePage } from "@/components/home-page"
 
 export default function App() {
   return (

@@ -3,7 +3,7 @@
   "type": "module",
   "scripts": {
     "dev": "concurrently -k -c 'bgMagenta,bgBlue' -n vite,codegen 'vite' 'graphql-codegen -w -s'",
-    "build": "tsc && vite build",
+    "build": "graphql-codegen && tsc && vite build",
     "preview": "vite preview",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0 --cache --cache-strategy content --cache-location=node_modules/.cache/eslint/.eslint-cache src",
     "format": "prettier --check --cache --cache-strategy content .",

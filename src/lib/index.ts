@@ -1,4 +1,3 @@
-
 import { type GetContactListQuery } from "@/types/__generated__/graphql"
 
 export function formatContactList(data: GetContactListQuery["contact"]) {
@@ -18,5 +17,3 @@ export function formatContactList(data: GetContactListQuery["contact"]) {
 export function isObjectEmpty(obj: Record<string | number | symbol, unknown>) {
   return Object.keys(obj).length === 0
 }
-
-
