@@ -73,11 +73,6 @@ export function AddPersonPage() {
         }
       }
     }
-
-    // navigate("/")
-    // console.log(res.data?.insert_contact?.returning[0])
-    // await queryClient.invalidateQueries({ queryKey: ["officeData"] })
-    // onClose()
   }
 
   return (
