@@ -149,10 +149,17 @@ export function useTable(data: FormattedContactList, refetch: () => void) {
                   {isFavorite ? "Remove from favorites" : "Add to favorites"}
                 </MenuItem>
                 <MenuItem
-                  onClick={() => {
-                    deleteContact({ variables: { id: row.original.id } })
-                    client.refetchQueries({ include: "active" })
-                    refetch()
+                  onClick={async () => {
+                    try {
+                      await deleteContact({
+                        variables: { id: row.original.id },
+                      })
+
+                      client.refetchQueries({ include: "active" })
+                      refetch()
+                    } catch (error) {
+                      console.error(error)
+                    }
                   }}
                   icon={<Icon as={HiOutlineTrash} boxSize="4" />}
                 >
