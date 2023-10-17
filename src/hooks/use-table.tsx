@@ -1,4 +1,5 @@
 import React from "react"
+import { useApolloClient } from "@apollo/client"
 import {
   Avatar,
   HStack,
@@ -32,6 +33,8 @@ export function useTable(data: FormattedContactList, refetch: () => void) {
   const [rowPinning, setRowPinning] = React.useState<RowPinningState>({
     top: [],
   })
+
+  const client = useApolloClient()
 
   const { deleteContact } = useDeleteContact()
 
@@ -148,6 +151,7 @@ export function useTable(data: FormattedContactList, refetch: () => void) {
                 <MenuItem
                   onClick={() => {
                     deleteContact({ variables: { id: row.original.id } })
+                    client.refetchQueries({ include: "active" })
                     refetch()
                   }}
                   icon={<Icon as={HiOutlineTrash} boxSize="4" />}

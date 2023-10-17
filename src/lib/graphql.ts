@@ -1,11 +1,21 @@
 import { ApolloClient, InMemoryCache } from "@apollo/client"
+import { LocalStorageWrapper, persistCache } from "apollo3-cache-persist"
 
 import { gql } from "@/types/__generated__"
 
-export const apolloClient = new ApolloClient({
-  uri: "https://wpe-hiring.tokopedia.net/graphql",
-  cache: new InMemoryCache(),
-})
+const cache = new InMemoryCache()
+
+export async function setupApolloClient() {
+  await persistCache({
+    cache,
+    storage: new LocalStorageWrapper(window.localStorage),
+  })
+
+  return new ApolloClient({
+    uri: "https://wpe-hiring.tokopedia.net/graphql",
+    cache,
+  })
+}
 
 export const queries = {
   GET_CONTACT_LIST: gql(/* GraphQL */ `
