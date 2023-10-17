@@ -118,6 +118,21 @@ export function ContactsTable({
         <TableContainer>
           <Table variant="simple">
             <Tbody>
+              {table.getTopRows().length !== 0 && (
+                <Tr>
+                  <Td
+                    colSpan={table.getAllColumns().length}
+                    color="blue.500"
+                    textTransform="uppercase"
+                    fontSize="sm"
+                    fontWeight="semibold"
+                    py="0"
+                    pl="4"
+                  >
+                    Favorites
+                  </Td>
+                </Tr>
+              )}
               {table.getTopRows().map((row) => (
                 <Tr key={row.id}>
                   {row.getVisibleCells().map((cell) => (
@@ -134,6 +149,12 @@ export function ContactsTable({
                   ))}
                 </Tr>
               ))}
+              {table.getTopRows().length !== 0 && (
+                <Tr>
+                  <Td colSpan={table.getAllColumns().length} />
+                </Tr>
+              )}
+
               {table.getRowModel().rows.map((row) => (
                 <Tr key={row.id}>
                   {row.getVisibleCells().map((cell) => (

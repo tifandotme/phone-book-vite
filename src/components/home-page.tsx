@@ -1,13 +1,14 @@
 import { formatContactList } from "@/lib"
 import { useContactListContext } from "@/hooks/use-contact-list-context"
 import { ContactsTable } from "@/components/contacts-table"
+import { FullscreenSpinner } from "@/components/fullscreen-spinner"
 
 export function HomePage() {
   const { queryData, refetch } = useContactListContext()
 
   const { data, error, loading } = queryData
 
-  if (loading) return <p>Loading...</p>
+  if (loading) return <FullscreenSpinner />
 
   if (error) return <p>Error : {error.message}</p>
 
