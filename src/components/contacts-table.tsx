@@ -155,7 +155,7 @@ export function ContactsTable({
                 </Tr>
               )}
 
-              {table.getRowModel().rows.map((row) => (
+              {table.getCenterRows().map((row) => (
                 <Tr key={row.id}>
                   {row.getVisibleCells().map((cell) => (
                     <Td
