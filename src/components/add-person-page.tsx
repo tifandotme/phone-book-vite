@@ -1,3 +1,4 @@
+import { useApolloClient } from "@apollo/client"
 import {
   Box,
   Button,
@@ -39,6 +40,8 @@ export function AddPersonPage() {
 
   const { addContact } = useAddContact()
 
+  const client = useApolloClient()
+
   const navigate = useNavigate()
 
   const toast = useToast()
@@ -55,6 +58,13 @@ export function AddPersonPage() {
           last_name: lastName,
           phones,
         },
+      })
+
+      client.refetchQueries({ include: "active" })
+
+      toast({
+        title: "Contact added successfully",
+        status: "success",
       })
 
       navigate("/")
