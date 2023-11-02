@@ -7,7 +7,7 @@ import {
 import { ChakraProvider } from "@chakra-ui/react"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 
-import { chakraTheme } from "@/config"
+import { theme } from "@/config"
 import { setupApolloClient } from "@/lib/graphql"
 import { AddPersonPage } from "@/components/add-person-page"
 import { ContactListProvider } from "@/components/contact-list-provider"
@@ -22,17 +22,16 @@ export default function App() {
     async function init() {
       const client = await setupApolloClient()
       setClient(client)
-    }
+      client.refetchQueries({ include: "active" })
+    } 
 
     init()
   }, [])
 
-  if (!client) {
-    return null
-  }
+  if (!client) return null
 
   return (
-    <ChakraProvider theme={chakraTheme}>
+    <ChakraProvider theme={theme}>
       <ApolloProvider client={client}>
         <ContactListProvider>
           <BrowserRouter>

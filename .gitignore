@@ -26,3 +26,4 @@ dist-ssr
 
 # GraphQL Codegen
 **/__generated__/*
+.vercel

@@ -20,10 +20,6 @@ export function formatContactList(data: GetContactListQuery["contact"]) {
   return result
 }
 
-export function isObjectEmpty(obj: Record<string | number | symbol, unknown>) {
-  return Object.keys(obj).length === 0
-}
-
 export const QueryResultContext = React.createContext<QueryContextValue<any>>({
   queryData: { loading: true },
   refetch: () => Promise.resolve({} as ApolloQueryResult<any>),
